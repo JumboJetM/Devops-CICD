@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: CICD-app
+  labels:
+    app: CICD-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: CICD-app
+  template:
+    metadata:
+      labels:
+        app: CICD-app
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+      - name: CICD-app
+        image: jagdishmohite/cicdimage:latest
+        imagePullPolicy: "Always"
+        ports:
+        - containerPort: 3000
