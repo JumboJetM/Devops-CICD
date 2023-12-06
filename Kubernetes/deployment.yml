@@ -1,13 +1,23 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-   name: thelounge
-   labels:
-     app: irc
+  name: swiggy-app
+  labels:
+    app: swiggy-app
 spec:
-   containers:
-     - name: thelounge
-       image: jagdishmohite/cicdimage
-       ports:
-         - containerPort: 9000
-           name: "irc-http"
+  replicas: 2
+  selector:
+    matchLabels:
+      app: swiggy-app
+  template:
+    metadata:
+      labels:
+        app: swiggy-app
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+      - name: swiggy-app
+        image: jagdishmohite/cicdimage
+        imagePullPolicy: "Always"
+        ports:
+        - containerPort: 3000
