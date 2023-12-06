@@ -1,20 +1,15 @@
-kind: Deployment
-apiVersion: apps/v1
+apiVersion: v1
+kind: Pod
 metadata:
-   name: mrdevops
+   name: thelounge
+   labels:
+     app: irc
 spec:
-   replicas: 2
-   selector:      # tells the controller which pods to watch/belong to
-    matchLabels:
-     app: mrdevops
-   template:
-      metadata:
-        labels:
-          app: mrdevops
-      spec:
-       containers:
-        - name: mrdevops
-          image: jagdishmohite/cicdimage
-          imagePullPolicy: Always
-          ports:
-          - containerPort: 80
+   containers:
+     - name: thelounge
+       image: linuxserver/thelounge
+       ports:
+         - containerPort: 9000
+           name: "irc-http"
+
+
