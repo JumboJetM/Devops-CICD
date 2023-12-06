@@ -17,7 +17,7 @@ spec:
       terminationGracePeriodSeconds: 30
       containers:
       - name: cicd-image
-        image: jagdishmohite/cicdimage
+        image: jagdishmohite/cicdimage:87
         imagePullPolicy: "Always"
         ports:
         - containerPort: 3000
