@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cicdimage
+  name: cicd-image
   labels:
-    app: cicdimage
+    app: cicd-image
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: cicdimage
+      app: cicd-image
   template:
     metadata:
       labels:
-        app: cicdimage
+        app: cicd-image
     spec:
       terminationGracePeriodSeconds: 30
       containers:
-      - name: cicdimage
+      - name: cicd-image
         image: jagdishmohite/cicdimage
         imagePullPolicy: "Always"
         ports:
